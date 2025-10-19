@@ -1,10 +1,9 @@
 streamlit
-transformers
-datasets
-torch
-soundfile
-pydub
 pandas
 altair
-openai
+pydub
+ffmpeg-python
 langdetect
+transformers
+torch
+openai-whisper
