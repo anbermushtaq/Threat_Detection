@@ -217,12 +217,11 @@ with st.spinner("Loading model..."):
 # -----------------------------------------------------------
 st.markdown("""
     <style>
-    .main-title {font-size:34px; font-weight:700;}
     .subtitle {color:#999;}
     </style>
 """, unsafe_allow_html=True)
 
-st.markdown('<div class="main-title">Speech Threat Detection Dashboard</div><div class="subtitle">Upload or enter text to detect threat categories</div>', unsafe_allow_html=True)
+st.markdown('<div class="subtitle">Upload or enter text to detect threat categories</div>', unsafe_allow_html=True)
 st.write("")
 
 tab1, tab2 = st.tabs(["⏳ Processing", "📊 Analysis"])
@@ -268,17 +267,8 @@ with tab1:
                     "scores": result["scores"]
                 }
                 log_to_db(record)
-            top_pct = max(result["scores"].values()) if result["scores"] else 0
-            st.success(f"**Predicted Category:** {result['label']}({top_pct:.2f}%)")
-
+            st.success(f"**Predicted Category:** {result['label']}")
             df_scores = pd.DataFrame(result["scores"].items(), columns=["Label", "Score"]).sort_values("Score", ascending=False)
-            st.bar_chart(df_scores.set_index("Label"))
-            
-            st.markdown("### Category Breakdown")
-            
-            df_scores = pd.DataFrame(result["scores"].items(), columns=["Label", "Percentage"]).sort_values("Percentage", ascending=False)
-            st.dataframe(df_scores.style.format({"Percentage": "{:.2f}%"}))
-
             st.bar_chart(df_scores.set_index("Label"))
 
 # -----------------------------------------------------------
