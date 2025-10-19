@@ -93,8 +93,8 @@ def get_classifier_pipeline(model_name: str):
         if model_name == "custom_xlm_roberta":
             classifier = pipeline(
                 "text-classification",
-                model="/content/drive/MyDrive/xlm_roberta_multilingual_classifier/final",
-                tokenizer="/content/drive/MyDrive/xlm_roberta_multilingual_classifier/final",
+                model="AiAnber/xlm-roberta-threat-detector",
+                tokenizer="AiAnber/xlm-roberta-threat-detector",
                 return_all_scores=True
             )
         else:
@@ -189,7 +189,7 @@ if model_type == "Zero-shot Models":
     }
 else:
     model_choices = {
-        "✔IB: XLM-R-Fine-tuned": "/content/drive/MyDrive/xlm_roberta_multilingual_classifier/final"
+        "✔IB: XLM-R-Fine-tuned": "AiAnber/xlm-roberta-threat-detector"
     }
 
 model_display = st.sidebar.selectbox("Choose a Model", list(model_choices.keys()))
