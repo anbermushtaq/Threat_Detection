@@ -1,0 +1,10 @@
+streamlit
+transformers
+datasets
+torch
+soundfile
+pydub
+pandas
+altair
+openai
+langdetect
